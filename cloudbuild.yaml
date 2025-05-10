@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args:
+      - functions
+      - deploy
+      - spc-virgin         # Name of your function
+      - --runtime=python311     # Specify your Python version (e.g., python310 or python311)
+      - --trigger-http
+      - --entry-point=main
+      - --source=.
+      - --region=us-east1
+      - --allow-unauthenticated
+
+timeout: 540s
