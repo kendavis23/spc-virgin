@@ -74,6 +74,8 @@ def read_virgin(bucket_name, source_blob_name):
     new_df['Category'] = new_df['Category'].astype(str)
     new_df['Amount'] = new_df['Amount'].astype(float)
 
+    new_df['Category'] = 'other'
+
     return new_df
     
 def revenue (virgin_df):
