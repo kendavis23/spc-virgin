@@ -112,6 +112,11 @@ def cost(virgin_df):
     WHERE File = 'virgin' AND Type = 'cost'
     """
     ex_df = client.query(ex_query).to_dataframe()
-    rc_df = pd.DataFrame()
+
+    rc_query = """
+    SELECT Substring, Category 
+    FROM `spc-sandbox-453019.financials.config-cost-categories`
+    WHERE File = 'virgin'"""
+    rc_df = client.query(rc_query).to_dataframe()
 
     return updateci(rc_df, ex_df, cost_df)
